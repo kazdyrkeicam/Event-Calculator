@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    
+    <h2>Adding an event</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="event_name">Name:</label>
+        <input type="text" name="event_name" id="event_name" value="{{ name }}" required>
+
+        <label for="event_date">Date:</label>
+        <input type="date" name="event_date" id="event_date" value="{{ date }}" required>
+        <input type="submit" value="Add">
+        
+    </form>
+        
+    <input class="button-back" type="button" onclick="location.href=/evca/" value="Back">
+
+{% endblock content %}

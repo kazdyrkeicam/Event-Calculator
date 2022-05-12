@@ -1,0 +1,45 @@
+
+
+li a {
+    color: green;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+}
+
+.card-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 0.5rem;
+    padding: 1.5rem;
+    align-items: center;
+}
+
+.member {
+    margin: 0.5rem;
+}
+
+.member-photo {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: aqua;
+}
+
+.button-back {
+    color: red;
+}
+
+.button-delete {
+    color: white;
+    background-color: red;
+}

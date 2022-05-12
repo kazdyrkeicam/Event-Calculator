@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block content %}    
+    <h2>Adding a member</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="member_name">First Name:</label>
+        <input type="text" name="member_name" id="member_name" value="{{ name }}" required>
+
+        <label for="member_surname">Second Name:</label>
+        <input type="text" name="member_surname" id="member_surname" value="{{ surname }}" required>
+        
+        <input type="submit" value="Add">
+    </form>
+
+    <input class="button-back" type="button" onclick="location.href=/evca/" value="Back">
+
+{% endblock content %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    {% load mathfilters %}
+
+
+    <h1>Event {{ event.name }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="all_debt">How much moeny you spent:</label>
+        <input type="text" name="all_debt" id="all_debt" value="{{ all_debt }}">
+        <input type="submit" value="all_debt">
+    </form>
+
+
+    {% if expenses_list %}
+        <ul>
+            {% for expens in expenses_list %}
+                <li>
+                    <p>Member: {{ expens.member }} </p>
+                    <p>Debt: {{ expens.debt|stringformat:".2f" }}  Due: {{ expens.due|stringformat:".2f" }}</p>
+                    {% with x=expens.debt y=expens.due %}
+                    <p>Total: {{ x|sub:y|stringformat:".2f" }} </p>
+                    {% endwith %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <input type="text" name="expens_id" value="{{ expens.id }}" hidden>
+
+                        <label for="add_debt">Add Debt:</label>
+                        <input type="text" name="debt_value" id="debt_value" value="{{ debt }}">
+                        <input type="submit" value="add_debt">
+
+                        <label for="add_due">Add Due:</label>
+                        <input type="text" name="due_value" id="due_value" value="{{ due }}">
+                        <input type="submit" value="add_due">
+
+                    </form>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="text" name="remove_member" id="remove_member" value="{{ expens.id }}" hidden>
+                        <input type="submit" value="remove">
+                    </form>
+
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- TODO
+                Members that are listed in event should not be listed here
+                Click on member, or a button near him should add him to event
+        -->
+    {% else %}
+        <p>Nothing...</p>
+    {% endif %}
+
+
+    <h3>Event Members list:</h3>
+    {% if event_members %}
+        <ul>
+            {% for member in event_members %}
+
+                <li>
+                    <p> {{ member.name }} {{ member.surname }} </p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="text" name="add_event_member" id="add_event_member" value="{{ member }}" hidden>
+                        <input type="submit" value="add this member">
+                        <input type="text" name="event_member_id" value="{{ member.id }}" hidden>
+                    </form>
+
+                </li>
+
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>No event members are available.</p>
+    {% endif %}
+    
+
+    <form method="post">
+        {% csrf_token %}
+        <input class="button-delete" type="submit" name="event_delete" id="event_delete" value="delete">
+    </form>
+
+    <input class="button-back" type="button" onclick="location.href=/evca/" value="Back">
+
+{% endblock content %}
