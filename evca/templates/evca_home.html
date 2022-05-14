@@ -5,16 +5,24 @@
 
     <main id="main" class="row">
         <section id="members-list" class="col-sm-6">
-            <h2>Members:</h2>
+            <h2 class="header-title">Members</h2>
+            <button onclick="location.href='/evca/add_member/'"
+            class="btn btn-outline-primary btn-lg"
+            style="width: 100%;">
+                Add new member
+            </button>
             {% if all_members_list %}
                 <ul class="list-group list-group-flush">
                     {% for member in all_members_list %}
                         <li class="list-group-item">
 
-                            <div class="flex btn btn-outline-primary person">
+                            <a href="/evca/member/{{ member.id }}/"
+                            class="d-flex btn btn-outline-dark no-border person">
                                 <img src="{% static 'images/dog.jpg' %}" alt="photo">
-                                <a href="/evca/member/{{ member.id }}/" class="" style="width: 100%; text-align: left;">{{ member.name }} {{ member.surname }}</a>
-                            </div>
+                                <div class="person-name">
+                                    <p>{{ member.name }} {{ member.surname }}</p>
+                                </div>
+                            </a>
 
                         </li>
                     {% endfor %}
@@ -22,21 +30,32 @@
             {% else %}
                 <p>No members are available.</p>
             {% endif %}
-            <button onclick="location.href='/evca/add_member/'" class="btn btn-outline-primary btn-lg">Add new member</button>
+
         </section>
         <section id="events-list" class="col-sm-6">
-            <h2>Events:</h2>
+            <h2 class="header-title">Events</h2>
+            <button onclick="location.href='/evca/add_event/'"
+            class="btn btn-outline-primary btn-lg"
+            style="width: 100%;">
+                Add new event
+            </button>
             {% if all_events_list %}
-                <ul>
+                <ul class="list-group list-group-flush">
                     {% for event in all_events_list %}
-                        <li><a href="/evca/event/{{ event.id }}/">{{ event.name }} {{ event.date }}</a></li>
+                        <li class="list-group-item">
+                            <a href="/evca/event/{{ event.id }}/"
+                            class="btn btn-outline-light no-border event">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">{{ event.name }}</div>
+                                    {{ event.date }}
+                                </div>
+                            </a>
+                        </li>
                     {% endfor %}
                 </ul>
             {% else %}
                 <p>No events are available.</p>
             {% endif %}
-
-            <button onclick="location.href='/evca/add_event/'" class="btn btn-outline-primary btn-lg">Add new event</button>
         </section>
     </main>
 {% endblock content %}

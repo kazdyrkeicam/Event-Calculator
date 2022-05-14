@@ -3,36 +3,34 @@
     --person-size: 8rem;
 }
 
-/* UTILITY */
-.flex {
-    display: flex;
+/* UTILITY BOOTSTRAP */
+.d-flex {
     gap: 1.5rem;
 }
 
-
-
-/* CUSTOM BOOTSTRAP */
-.btn {
-    text-align: center;
-    align-items: center;
-}
-
-.list-group-item {
-    justify-content: center;
-    align-items: center;
+/* UTILITY */
+.no-border {
+    border: none;
 }
 
 
 
 /* OWN CLASSES */
+.header-title {
+    font-size: 2.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    color: $dark;
+}
+
 #members-list {
     /* ! it's not responsive!!! Make it better */
     width: 40em;
-    outline: 2px solid blue;
+    /* outline: 2px solid blue; */
 }
 
 .person {
-    border: 2px solid lime;
+    /* border: 2px solid lime; */
     height: var(--person-size);
     width: 100%;
 }
@@ -43,9 +41,19 @@
     max-height: var(--person-size);
     border-radius: 50%;
     object-fit: fit;
-    border: 2px solid red
+    /* border: 2px solid red */
 }
 
-.person a {
-    border: 2px solid orange;
+.person-name {
+    /* outline: 2px solid orange; */
+}
+
+.person-name p {
+    vertical-align: bottom;
+    /* outline: 5px solid blue; */
+}
+
+.event {
+    /* outline: 2px solid orange; */
+    width: 100%;
 }
