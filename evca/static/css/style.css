@@ -1,6 +1,6 @@
 /* ZMIENNE */
 :root {
-    --person-size: 8rem;
+    --person-heigth: 8rem;
 }
 
 /* UTILITY BOOTSTRAP */
@@ -19,40 +19,24 @@
 .header-title {
     font-size: 2.5rem;
     padding: 1.5rem;
-    text-align: center;
-}
-
-#members-list {
-    /* ! it's not responsive!!! Make it better */
-    width: 40em;
-    /* outline: 2px solid blue; */
 }
 
 .person {
-    /* border: 2px solid lime; */
-    height: var(--person-size);
-    width: 100%;
+    height: var(--person-heigth);
 }
 
 .person img {
     aspect-ratio: 1 / 1;
-    height: 100%;
-    max-height: var(--person-size);
+    /* ! CHAGNE THE ABSOLUTE SIZE */
+    width: 150px;
+    height: 120px;
     border-radius: 50%;
-    object-fit: fit;
-    /* border: 2px solid red */
 }
 
 .person-name {
-    /* outline: 2px solid orange; */
-}
-
-.person-name p {
-    vertical-align: bottom;
-    /* outline: 5px solid blue; */
+    margin: auto;
 }
 
 .event {
-    /* outline: 2px solid orange; */
     width: 100%;
 }

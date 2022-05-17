@@ -3,60 +3,62 @@
 
 {% block content %}
 
-    <main id="main" class="row">
-        <section id="members-list" class="col-sm-6">
-            <h2 class="header-title">Members</h2>
-            <button onclick="location.href='/evca/add_member/'"
-            class="btn btn-outline-primary btn-lg"
-            style="width: 100%;">
-                Add new member
-            </button>
-            {% if all_members_list %}
-                <ul class="list-group list-group-flush">
-                    {% for member in all_members_list %}
-                        <li class="list-group-item">
-
-                            <a href="/evca/member/{{ member.id }}/"
-                            class="d-flex btn btn-outline-dark no-border person">
-                                <img src="{% static 'images/dog.jpg' %}" alt="photo">
-                                <div class="person-name">
-                                    <p>{{ member.name }} {{ member.surname }}</p>
-                                </div>
-                            </a>
-
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No members are available.</p>
-            {% endif %}
-
-        </section>
-        <section id="events-list" class="col-sm-6">
-            <h2 class="header-title">Events</h2>
-            <button onclick="location.href='/evca/add_event/'"
-            class="btn btn-outline-primary btn-lg"
-            style="width: 100%;">
-                Add new event
-            </button>
-            {% if all_events_list %}
-                <ul class="list-group list-group-flush">
-                    {% for event in all_events_list %}
-                        <li class="list-group-item">
-                            <a href="/evca/event/{{ event.id }}/"
-                            class="btn btn-outline-light no-border event">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">{{ event.name }}</div>
-                                    {{ event.date }}
-                                </div>
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No events are available.</p>
-            {% endif %}
-        </section>
+    <main id="main" class="container">
+        <div class="row">
+            <section id="events-list" class="col-sm">
+                <h2 class="header-title">Events</h2>
+                <button onclick="location.href='/evca/add_event/'"
+                class="btn btn-outline-primary btn-lg"
+                style="width: 100%;">
+                    Add new event
+                </button>
+                {% if all_events_list %}
+                    <ul class="list-group list-group-flush">
+                        {% for event in all_events_list %}
+                            <li class="list-group-item">
+                                <a href="/evca/event/{{ event.id }}/"
+                                class="btn btn-outline-dark no-border event">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">{{ event.name }}</div>
+                                        {{ event.date }}
+                                    </div>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No events are available.</p>
+                {% endif %}
+            </section>
+            <section id="members-list" class="col-sm">
+                <h2 class="header-title">Members</h2>
+                <button onclick="location.href='/evca/add_member/'"
+                    class="btn btn-outline-primary btn-lg"
+                    style="width: 100%;">
+                    Add new member
+                </button>
+                {% if all_members_list %}
+                    <ul class="list-group list-group-flush">
+                        {% for member in all_members_list %}
+                            <li class="list-group-item">
+                                <a href="/evca/member/{{ member.id }}/"
+                                    class="container btn btn-outline-dark no-border person">
+                                    <div class="row">
+                                        <img src="{% static 'images/dog.jpg' %}" alt="photo"
+                                            class="col-sm">
+                                        <div class="person-name col-sm">
+                                            <p>{{ member.name }} {{ member.surname }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No members are available.</p>
+                {% endif %}
+            </section>
+        </div>
     </main>
 
 {% endblock content %}
